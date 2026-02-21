@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Courses UI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e2a78, #6a11cb);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  padding: 60px 20px 20px;
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+.header span {
+  color: #00d4ff;
+}
+
+.header p {
+  margin: 10px 0 20px;
+  color: #ddd;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+  color: white;
+}
+
+.btn-secondary {
+  background: white;
+  color: #333;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Cards Section */
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  gap: 25px;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  width: 280px;
+  transition: 0.4s;
+  animation: fadeUp 1s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Card Image */
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Title */
+.card h2 {
+  margin: 15px 0;
+}
+
+/* Rating */
+.rating {
+  margin: 10px 0;
+  color: gold;
+}
+
+/* Button */
+.card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating Animation */
+.floating {
+  position: absolute;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+/* Rocket */
+.rocket {
+  top: 50px;
+  right: 50px;
+  width: 80px;
+}
+
+/* Bulb */
+.bulb {
+  left: 50px;
+  top: 120px;
+  width: 60px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating Icons -->
+<img src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" class="floating rocket">
+<img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" class="floating bulb">
+
+<!-- Header -->
+<div class="header">
+  <h1>Explore Our <span>Popular Courses</span></h1>
+  <p>Learn new skills to advance your career</p>
+  
+  <button class="btn btn-primary">Browse Courses</button>
+  <button class="btn btn-secondary">View Categories</button>
+</div>
+
+<!-- Cards -->
+<div class="cards">
+
+  <!-- Card 1 -->
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721276.png">
+    <h2>Web Development</h2>
+    <p>24 Lessons</p>
+    <div class="rating">★★★★☆</div>
+    <button>Join Now</button>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995450.png">
+    <h2>Digital Marketing</h2>
+    <p>18 Lessons</p>
+    <div class="rating">★★★★★</div>
+    <button>Enroll Now</button>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+    <h2>Graphic Design</h2>
+    <p>20 Lessons</p>
+    <div class="rating">★★★★☆</div>
+    <button>Get Started</button>
+  </div>
+
+</div>
+
+</body>
+</html>

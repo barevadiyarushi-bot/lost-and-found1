@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #2b4c7e;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.sidebar a:hover {
+  background: #1d3557;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.blue { background: #3a7bd5; }
+.green { background: #2ecc71; }
+.orange { background: #ff7f50; }
+.purple { background: #8e44ad; }
+
+/* Sections */
+.section {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Button */
+button {
+  padding: 6px 12px;
+  border: none;
+  background: #3a7bd5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>📘 College System</h2>
+  <a href="#" onclick="loadPage('dashboard')">Dashboard</a>
+  <a href="courses.html" onclick="loadPage('courses')">Courses</a>
+  <a href="students.html" onclick="loadPage('students')">Students</a>
+  <a href="faculty.html" onclick="loadPage('faculty')">Faculty</a>
+  <a href="attendance.html" onclick="loadPage('attendance')">Attendance</a>
+  <a href="exams.html" onclick="loadPage('exams')">Exams</a>
+  <a href="reports.html" onclick="loadPage('reports')">Reports</a>
+</div>
+
+<!-- Main -->
+<div class="main" id="content">
+
+  <h1>Welcome Back</h1>
+  <p>Manage your college efficiently</p>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card blue">Total Students<br><h2>1250</h2></div>
+    <div class="card green">Total Faculty<br><h2>85</h2></div>
+    <div class="card orange">Courses Offered<br><h2>32</h2></div>
+    <div class="card purple">Events<br><h2>5</h2></div>
+  </div>
+
+  <!-- Overview -->
+  <div class="section">
+    <h3>Student Overview</h3>
+    <p>B.Sc: 320 | BBA: 280 | B.Tech: 410 | MBA: 240</p>
+    <button onclick="alert('Viewing Monthly Data')">This Month</button>
+    <button onclick="alert('Viewing Yearly Data')">This Year</button>
+  </div>
+
+  <!-- Events -->
+  <div class="section">
+    <h3>Upcoming Events</h3>
+    <ul>
+      <li>Science Fair - Tomorrow</li>
+      <li>Guest Lecture - April 30</li>
+      <li>Sports Meet - May 5</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- JavaScript -->
+<script>
+function loadPage(page) {
+  const content = document.getElementById("content");
+
+  if (page === "courses") {
+    content.innerHTML = `
+      <h1>Courses</h1>
+      <p>List of all courses</p>
+      <button onclick="alert('Add Course Clicked')">Add Course</button>
+    `;
+  }
+
+  else if (page === "students") {
+    content.innerHTML = `
+      <h1>Students</h1>
+      <p>Manage student records</p>
+      <button onclick="alert('Add Student')">Add Student</button>
+    `;
+  }
+
+  else if (page === "faculty") {
+    content.innerHTML = `
+      <h1>Faculty</h1>
+      <p>Manage faculty</p>
+      <button onclick="alert('Add Faculty')">Add Faculty</button>
+    `;
+  }
+
+  else if (page === "attendance") {
+    content.innerHTML = `
+      <h1>Attendance</h1>
+      <p>Track attendance</p>
+      <button onclick="alert('Mark Attendance')">Mark Attendance</button>
+    `;
+  }
+
+  else if (page === "exams") {
+    content.innerHTML = `
+      <h1>Exams</h1>
+      <p>Manage exams</p>
+      <button onclick="alert('Schedule Exam')">Schedule Exam</button>
+    `;
+  }
+
+  else if (page === "reports") {
+    content.innerHTML = `
+      <h1>Reports</h1>
+      <p>View reports</p>
+      <button onclick="alert('Download Report')">Download</button>
+    `;
+  }
+
+  else {
+    location.reload(); // Dashboard
+  }
+}
+</script>
+
+</body>
+</html>

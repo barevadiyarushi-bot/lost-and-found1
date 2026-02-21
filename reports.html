@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reports & Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e2a78, #6a11cb);
+  color: white;
+  text-align: center;
+}
+
+/* Header */
+.header {
+  padding: 60px 20px;
+}
+
+.header h1 {
+  font-size: 38px;
+}
+
+.header span {
+  color: #00d4ff;
+}
+
+.header p {
+  color: #ddd;
+  margin: 10px 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary {
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+  color: white;
+}
+
+.secondary {
+  background: white;
+  color: #333;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+/* Sections */
+.section {
+  display: none;
+}
+.active {
+  display: block;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+.card {
+  width: 250px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* Back */
+.back {
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="section active">
+
+  <div class="header">
+    <h1>View Your <span>Reports & Analytics</span></h1>
+    <p>Track your progress and performance with detailed data</p>
+
+    <button class="btn primary" onclick="showSection('reports')">View Reports</button>
+    <button class="btn secondary" onclick="downloadData()">Download Data</button>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card" onclick="alert('Attendance Details')">
+      <h3>📊 Attendance</h3>
+      <p>95%</p>
+    </div>
+
+    <div class="card" onclick="alert('Grade Details')">
+      <h3>📘 Grade</h3>
+      <p>A+</p>
+    </div>
+
+    <div class="card" onclick="alert('Study Time Details')">
+      <h3>⏱ Time Studied</h3>
+      <p>42 hrs</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">⭐ Exam Performance</div>
+    <div class="stat">📄 36/40 Assignments</div>
+    <div class="stat">📈 85% Progress</div>
+  </div>
+
+</div>
+
+<!-- REPORTS PAGE -->
+<div id="reports" class="section">
+  <h1>📊 Detailed Reports</h1>
+  <p>Charts and analytics will appear here.</p>
+  <button class="back" onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- JS -->
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+
+/* Download Data */
+function downloadData() {
+  let data = `
+Name,Attendance,Grade,Hours
+John,95%,A+,42
+`;
+
+  let blob = new Blob([data], { type: "text/csv" });
+  let a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "report.csv";
+  a.click();
+}
+</script>
+
+</body>
+</html>

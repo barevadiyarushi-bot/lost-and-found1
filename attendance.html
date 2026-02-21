@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Attendance Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e2a78, #6a11cb);
+  color: white;
+  text-align: center;
+}
+
+/* Header */
+.header {
+  padding: 60px 20px;
+}
+
+.header h1 {
+  font-size: 38px;
+}
+
+.header span {
+  color: #00d4ff;
+}
+
+.header p {
+  color: #ddd;
+  margin: 10px 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary {
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+  color: white;
+}
+
+.secondary {
+  background: white;
+  color: #333;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+/* Section */
+.section {
+  display: none;
+}
+.active {
+  display: block;
+}
+
+/* Attendance Table */
+.table {
+  width: 70%;
+  margin: 30px auto;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+
+.actions button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.present {
+  background: #2ecc71;
+  color: white;
+}
+
+.absent {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Stats */
+.stats {
+  margin-top: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="header">
+    <h1>Attendance <span>Management</span> Made Easy</h1>
+    <p>Track and manage attendance effortlessly</p>
+
+    <button class="btn primary" onclick="showSection('track')">Track Now</button>
+    <button class="btn secondary" onclick="showSection('learn')">Learn More</button>
+  </div>
+</div>
+
+<!-- TRACK PAGE -->
+<div id="track" class="section">
+  <h2>📋 Attendance Sheet</h2>
+
+  <div class="table" id="table">
+    <!-- Rows will update -->
+  </div>
+
+  <div class="stats">
+    <h3 id="stats">Present: 0% | Absent: 0%</h3>
+  </div>
+
+  <button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- LEARN PAGE -->
+<div id="learn" class="section">
+  <h2>📘 Learn More</h2>
+  <p>This system helps manage attendance easily.</p>
+  <button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<script>
+let students = [
+  {name:"John Smith", status:null},
+  {name:"Jane Doe", status:null},
+  {name:"Mark Lee", status:null},
+  {name:"Emily Chan", status:null},
+  {name:"Harry Johnson", status:null}
+];
+
+function renderTable() {
+  let table = document.getElementById("table");
+  table.innerHTML = "";
+
+  students.forEach((s, i) => {
+    table.innerHTML += `
+      <div class="row">
+        <span>${s.name}</span>
+        <div class="actions">
+          <button class="present" onclick="mark(${i}, 'present')">✔</button>
+          <button class="absent" onclick="mark(${i}, 'absent')">✖</button>
+        </div>
+      </div>
+    `;
+  });
+
+  updateStats();
+}
+
+function mark(index, status) {
+  students[index].status = status;
+  updateStats();
+}
+
+function updateStats() {
+  let present = students.filter(s => s.status === "present").length;
+  let total = students.length;
+  let absent = total - present;
+
+  let p = Math.round((present/total)*100);
+  let a = Math.round((absent/total)*100);
+
+  document.getElementById("stats").innerText =
+    `Present: ${p}% | Absent: ${a}%`;
+}
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+
+  if(id === "track") renderTable();
+}
+</script>
+
+</body>
+</html>

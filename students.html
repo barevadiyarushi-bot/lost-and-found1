@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Landing Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e2a78, #6a11cb);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  padding: 60px 20px;
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+.header span {
+  color: #00d4ff;
+}
+
+.header p {
+  margin: 15px 0;
+  color: #ddd;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+  color: white;
+}
+
+.btn-secondary {
+  background: white;
+  color: #333;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 40px;
+}
+
+.card {
+  width: 300px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.4s;
+  animation: fadeUp 1s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card h2 {
+  font-size: 30px;
+}
+
+.card p {
+  color: #ddd;
+}
+
+/* Floating icons */
+.floating {
+  position: absolute;
+  animation: float 4s ease-in-out infinite;
+}
+
+.bulb {
+  left: 50px;
+  top: 120px;
+  width: 70px;
+}
+
+.plane {
+  right: 50px;
+  top: 120px;
+  width: 80px;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section switch */
+.section {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .header h1 {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Icons -->
+<img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" class="floating bulb">
+<img src="https://cdn-icons-png.flaticon.com/512/2972/2972531.png" class="floating plane">
+
+<!-- MAIN SECTION -->
+<div id="home" class="section active">
+
+  <div class="header">
+    <h1>Empowering <span>Students</span> to Achieve Their Goals</h1>
+    <p>Join thousands of students pursuing their dreams</p>
+
+    <div class="buttons">
+      <button class="btn btn-primary" onclick="showSection('start')">Get Started</button>
+      <button class="btn btn-secondary" onclick="showSection('learn')">Learn More</button>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+      <div class="card-content">
+        <h2>25k+</h2>
+        <p>Active Students</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png">
+      <div class="card-content">
+        <h2>1.5k+</h2>
+        <p>Courses Available</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
+      <div class="card-content">
+        <h2>95%</h2>
+        <p>Success Rate</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- GET STARTED PAGE -->
+<div id="start" class="section">
+  <h1>🚀 Get Started</h1>
+  <p>Welcome! Begin your learning journey.</p>
+  <button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- LEARN MORE PAGE -->
+<div id="learn" class="section">
+  <h1>📘 Learn More</h1>
+  <p>Explore courses, features, and benefits.</p>
+  <button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- JS -->
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>

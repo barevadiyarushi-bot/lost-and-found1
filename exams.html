@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e2a78, #6a11cb);
+  color: white;
+  text-align: center;
+}
+
+/* Header */
+.header {
+  padding: 60px 20px;
+}
+
+.header h1 {
+  font-size: 38px;
+}
+
+.header span {
+  color: #00d4ff;
+}
+
+.header p {
+  color: #ddd;
+  margin: 10px 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary {
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+  color: white;
+}
+
+.secondary {
+  background: white;
+  color: #333;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+/* Section */
+.section {
+  display: none;
+}
+.active {
+  display: block;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin-top: 10px;
+}
+
+/* Back button */
+.back {
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="header">
+    <h1>Prepare for Your <span>Upcoming Exams!</span></h1>
+    <p>Get ready for your exams with essential tools and resources.</p>
+
+    <button class="btn primary" onclick="showSection('start')">Start Preparing</button>
+    <button class="btn secondary" onclick="showSection('guides')">Review Guides</button>
+  </div>
+
+  <div class="cards">
+    <div class="card" onclick="showSection('practice')">
+      <h3>1️⃣ Practice Tests</h3>
+    </div>
+
+    <div class="card" onclick="showSection('study')">
+      <h3>2️⃣ Study Materials</h3>
+    </div>
+
+    <div class="card" onclick="showSection('mock')">
+      <h3>3️⃣ Mock Exams</h3>
+    </div>
+  </div>
+</div>
+
+<!-- START -->
+<div id="start" class="section">
+  <h1>🚀 Start Preparing</h1>
+  <p>Begin your exam preparation journey.</p>
+  <button class="back" onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- GUIDES -->
+<div id="guides" class="section">
+  <h1>📘 Review Guides</h1>
+  <p>Access helpful study guides.</p>
+  <button class="back" onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- PRACTICE -->
+<div id="practice" class="section">
+  <h1>📝 Practice Tests</h1>
+  <p>Test your knowledge with practice exams.</p>
+  <button class="back" onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- STUDY -->
+<div id="study" class="section">
+  <h1>📚 Study Materials</h1>
+  <p>Read notes, PDFs, and resources.</p>
+  <button class="back" onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- MOCK -->
+<div id="mock" class="section">
+  <h1>🎯 Mock Exams</h1>
+  <p>Simulate real exam conditions.</p>
+  <button class="back" onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- JS -->
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
